@@ -1,0 +1,58 @@
+<!--
+<% flash.each do |type,message|%>
+    <h3 class="alert alert-primary" ><%= message%></h3>
+<% end %>
+-->
+<% if current_user.admin?||current_user.editor?||current_user.guest?%>
+<h1>All Posts List</h1>
+<% @posts.each do |post|%>
+    <% if current_user.admin?%>
+    Name : <%=link_to post.name , post %><br>
+    <% else %>
+    Name : <%= post.name %><br>
+    <% end %>
+    Platform : <%= post.platform %><br>
+    Date : <%= post.date.strftime("%d-%m-%Y") %><br><br>
+<% end %>
+<% end %>
+<%= paginate @posts%><br>
+<% if current_user.admin?||current_user.editor?%>
+    <%= link_to "New Post" , new_post_path , class:"btn btn-primary" %>
+<% end %>
+  
+<%# <div class="container-fluid p-5 my-5 bg-warning border">
+  <h1>My First Bootstrap Page</h1>
+  <p>This container has a border and some extra padding and margins.</p>
+</div>
+
+<div class="container-fluid p-5 my-5 bg-dark text-white">
+  <h1>My First Bootstrap Page</h1>
+  <p>This container has a dark background color and a white text, and some extra padding and margins.</p>
+</div>
+
+<div class="container-fluid p-5 my-5 bg-primary text-white">
+  <h1>My First Bootstrap Page</h1>
+  <p>This container has a blue background color and a white text, and some extra padding and margins.</p>
+</div> %>
+
+<%# <div class="row">
+    <div class="col-sm-3 bg-primary"> Hello </div>
+    <div class="col-sm-3 bg-danger"> World </div>
+    <div class="col-sm-3 bg-warning"> There </div>
+    <div class="col-sm-3 bg-info"> !!!!! </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-4 bg-primary"> Hello </div>
+    <div class="col-sm-4 bg-danger"> World </div>
+    <div class="col-sm-4 bg-warning"> There </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-5 bg-primary"> Hello </div>
+    <div class="col-sm-5 bg-danger"> World </div>
+    <div class="col-sm-2 bg-warning"> There </div>
+</div> %>
+
+</body>
+</html>

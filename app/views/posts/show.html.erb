@@ -1,0 +1,11 @@
+<h1>Post Details </h1>
+
+Name : <%= @post.name %><br>
+Platform : <%= @post.platform %><br>
+Date : <%= @post.date.strftime("%d %B, %Y") %><br><br>
+
+<% if current_user.admin? %>
+<%= link_to "Edit Post" , edit_post_path ,class:"btn btn-warning"%><br><br>
+<%= button_to "Delete Post" , post_path , method: :delete,class:"btn btn-danger"%><br>
+<% end %>
+<%= link_to "View All Post" , root_path  ,class:"btn btn-primary" %>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Punexp2</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <div><%= notice %></div>
+    <div><%= alert %></div>
+    <% if user_signed_in? %>
+      Logged in as <storng><%= current_user.email %></storng><br>
+      Loggin Count : <storng><%= current_user.sign_in_count %></storng><br>
+      Your Role : <storng><%= current_user.userrole %><br></storng><br>
+      <div class="d-flex">
+      <%= link_to "Edit Profile" , edit_user_registration_path , class:"btn btn-outline-primary"%> &nbsp &nbsp
+      <%= button_to "Log Out" , destroy_user_session_path, method: :delete , class:"btn btn-outline-danger"%>
+      </div>
+    <% else %>
+      <%= link_to "Sign Up" , new_user_registration_path , class:"btn btn-primary" %> 
+      <%= link_to "Log In" , new_user_session_path , class:"btn btn-warning"%>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

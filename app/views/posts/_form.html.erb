@@ -1,0 +1,12 @@
+<%= form_with model: @post do |f|%>
+    <%= f.label :name , "Name : "%>
+    <%= f.text_field :name , placeholder:"Enter your name"%><br><br>
+
+    <%= f.label :platform , "PLatform : "%>
+    <%= f.text_field :platform , placeholder:"Enter platform "%><br><br>
+
+    <%= f.label :date , "Date : "%>
+    <%= f.date_field :date%><br><br>
+
+    <%= f.submit "Save Post"%>
+<% end %>
